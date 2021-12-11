@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('signUp', [PassportController::class, 'signUp']);
 Route::post('signIn', [PassportController::class, 'signIn']);
 
+Route::middleware('auth:api')->group(function(){
+
+    // Users table endpoints
+
+    Route::post('logout', [PassportController::class, 'logout']);
+    Route::get('getAll', [UserController::class, 'getAll']);
+    Route::post('getProfile', [UserController::class, 'getProfile']);
+    Route::put('updateProfile', [UserController::class, 'updateProfile']);
+
+});

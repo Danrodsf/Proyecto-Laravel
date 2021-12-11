@@ -37,7 +37,9 @@ class PassportController extends Controller {
 
             ]);
 
-        } catch (QueryException $error) {
+        } 
+        
+        catch (QueryException $error) {
 
             $errorCode = $error -> errorInfo[1];
 
