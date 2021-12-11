@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class GamersTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class GamersTable extends Migration
      */
     public function up()
     {
-        Schema::create('gamers', function (Blueprint $table) {
-
-            $table->bigIncrements('id');
-            $table->string('nick');
-            $table->string('email')->unique();;
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('userName');
+            $table->string('email')->unique();
             $table->string('password');
-            $table->string('steamUsername');
+            $table->string('steamUserName');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
-
-        }); 
+        });
     }
 
     /**
@@ -32,6 +32,6 @@ class GamersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gamers');
+        Schema::dropIfExists('users');
     }
 }

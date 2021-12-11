@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Passport_Controller;
+use App\Http\Controllers\PassportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('signUp', [Passport_Controller::class, 'signUp']);
-Route::post('signIn', [Passport_Controller::class, 'signIn']);
+Route::post('signUp', [PassportController::class, 'signUp']);
+Route::post('signIn', [PassportController::class, 'signIn']);
+
