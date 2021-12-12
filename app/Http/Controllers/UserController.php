@@ -8,7 +8,7 @@ use App\Models\User;
 
 class UserController extends Controller {
     
-    public function getAll(){
+    public function getAll() {
 
         try {
             
@@ -24,7 +24,7 @@ class UserController extends Controller {
 
     }
 
-    public function getProfile(Request $request){
+    public function getProfile(Request $request) {
 
         $id = $request->input('id');
 
@@ -42,7 +42,7 @@ class UserController extends Controller {
 
     }
     
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request) {
 
         $id = $request->input('id');
 
@@ -91,7 +91,7 @@ class UserController extends Controller {
 
     }
     
-    public function deleteUser(Request $request){
+    public function deleteUser(Request $request) {
 
         $id = $request->input('id');
 

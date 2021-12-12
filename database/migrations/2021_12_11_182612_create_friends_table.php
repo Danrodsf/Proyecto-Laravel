@@ -4,16 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFriendsTable extends Migration
-{
+class CreateFriendsTable extends Migration {
+    
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
+
         Schema::create('friends', function (Blueprint $table) {
+
             $table->id();
             $table->boolean('accepted')->default('0');
             $table->timestamps();
@@ -30,7 +31,9 @@ class CreateFriendsTable extends Migration
             ->on('users')
             ->references('id')
             ->onDelete('cascade');
+
         });
+
     }
 
     /**
@@ -38,8 +41,10 @@ class CreateFriendsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
+
         Schema::dropIfExists('friends');
+
     }
+
 }

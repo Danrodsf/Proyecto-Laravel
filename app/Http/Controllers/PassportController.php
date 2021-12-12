@@ -8,7 +8,7 @@ use Illuminate\Database\QueryException;
 
 class PassportController extends Controller {
 
-    public function signUp(Request $request){
+    public function signUp(Request $request) {
 
         $this->validate($request, [
 
@@ -56,7 +56,7 @@ class PassportController extends Controller {
 
     }
 
-    public function signIn(Request $request){
+    public function signIn(Request $request) {
 
         $login = [
 
@@ -78,7 +78,7 @@ class PassportController extends Controller {
 
     }
 
-    public function Logout(Request $request){
+    public function Logout(Request $request) {
 
         // to do logout
 
