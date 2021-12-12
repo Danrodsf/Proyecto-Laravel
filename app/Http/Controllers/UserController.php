@@ -91,7 +91,7 @@ class UserController extends Controller {
 
     }
     
-    public function deleteUser(Request $request) {
+    public function removeUser(Request $request) {
 
         $id = $request->input('id');
 

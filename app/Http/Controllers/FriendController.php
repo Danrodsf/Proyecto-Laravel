@@ -64,7 +64,7 @@ class FriendController extends Controller {
 
     }
 
-    public function showAllFriends(Request $request){
+    public function getFriends(Request $request){
 
         $id = $request->input('userId');
 
@@ -82,7 +82,7 @@ class FriendController extends Controller {
         
     }
 
-    public function showPendingFriends(Request $request){
+    public function getPendingFriends(Request $request){
 
         $id = $request->input('userId');
 

@@ -9,7 +9,7 @@ class Party extends Model {
 
     use HasFactory;
 
-    protected $fillable = ['name', 'owner', 'url', 'gameId'];
+    protected $fillable = ['name', 'owner', 'gameId'];
 
     public function belongs() {
 
