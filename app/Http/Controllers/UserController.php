@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use App\Models\User;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     
     public function getAll(){
 
@@ -31,7 +30,7 @@ class UserController extends Controller
 
         try {
 
-            return User::all()->where('id', '=', $id) -> makeHidden(['password']) -> keyBy('id');
+            return User::all()->where('id', '=', $id)->makeHidden(['password'])->keyBy('id');
 
         } 
         
@@ -47,7 +46,7 @@ class UserController extends Controller
 
         $id = $request->input('id');
 
-        $validatedUpdate = $request->validate([
+        $this->validate($request, [
 
             'id' => 'required',
             'userName' => 'required|string|min:3',
@@ -64,17 +63,27 @@ class UserController extends Controller
 
         ]);
 
+    
         try {
 
-            return User::where('id', '=', $id) -> update($validatedUpdate);
+            $validatedUpdate = [
+
+                'userName' => $request->userName,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'steamUserName' => $request->steamUserName
+
+            ];
+
+            return User::where('id', '=', $id)->update($validatedUpdate);
 
         } catch (QueryException $error) {
 
-            $errorCode = $error -> errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             if($errorCode == 1062) {
 
-                return response() -> json(['error' => "E-mail already Registered"]);
+                return response()->json(['error' => "E-mail already Registered"]);
 
             }
 

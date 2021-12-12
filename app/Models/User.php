@@ -22,5 +22,10 @@ class User extends Authenticatable
     protected $hidden = ['password'];
 
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function friends()
+    {
+        return $this->hasMany('App\Models\Friend');
+    }
     
 }

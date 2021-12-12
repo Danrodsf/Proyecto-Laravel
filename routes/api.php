@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,11 +22,20 @@ Route::post('signIn', [PassportController::class, 'signIn']);
 
 Route::middleware('auth:api')->group(function(){
 
-    // Users table endpoints
+    // Users table Endpoints
 
     Route::post('logout', [PassportController::class, 'logout']);
     Route::get('getAll', [UserController::class, 'getAll']);
     Route::post('getProfile', [UserController::class, 'getProfile']);
     Route::put('updateProfile', [UserController::class, 'updateProfile']);
+
+    // Friends table Endpoints
+
+    Route::post('addFriend', [FriendController::class, 'addFriend']);
+    Route::post('showAllFriends', [FriendController::class, 'showAllFriends']);
+    Route::post('showPendingFriends', [FriendController::class, 'showPendingFriends']);
+    Route::put('acceptFriend', [FriendController::class, 'acceptFriend']);
+    Route::delete('removeFriend', [FriendController::class, 'removeFriend']);
+
 
 });

@@ -30,10 +30,10 @@ class PassportController extends Controller {
 
             $user = User::create([
 
-                'userName' => $request -> userName,
-                'email' => $request -> email,
-                'password' => bcrypt($request -> password),
-                'steamUserName' => $request -> steamUserName
+                'userName' => $request->userName,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'steamUserName' => $request->steamUserName
 
             ]);
 
@@ -41,17 +41,17 @@ class PassportController extends Controller {
         
         catch (QueryException $error) {
 
-            $errorCode = $error -> errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             if ($errorCode == 1062) {
 
-                return response() -> json(['error' => 'Email already registered']);
+                return response()->json(['error' => 'Email already registered']);
 
             }
 
         }
 
-        $token = $user -> createToken('LaravelAuthApp') -> accessToken;
+        $token = $user->createToken('LaravelAuthApp')->accessToken;
         return response()->json(['token' => $token], 200);
 
     }
@@ -60,19 +60,19 @@ class PassportController extends Controller {
 
         $login = [
 
-            'email' => $request -> email,
-            'password' => $request -> password
+            'email' => $request->email,
+            'password' => $request->password
 
         ];
 
-        if (auth() -> attempt($login)) {
+        if (auth()->attempt($login)) {
 
-            $token = auth() -> user() -> createToken('LaravelAuthApp') -> accessToken;
-            return response() -> json(['token' => $token], 200);
+            $token = auth()->user()->createToken('LaravelAuthApp') -> accessToken;
+            return response()->json(['token' => $token], 200);
 
         } else {
 
-            return response() -> json(['error' => 'You are not Authorized'], 401);
+            return response()->json(['error' => 'You are not Authorized'], 401);
 
         }
 
