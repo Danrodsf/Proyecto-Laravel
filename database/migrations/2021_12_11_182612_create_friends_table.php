@@ -23,13 +23,13 @@ class CreateFriendsTable extends Migration
             $table->foreign('userId1', 'fk_friends1_users')
             ->on('users')
             ->references('id')
-            ->onDelete('restrict');
+            ->onDelete('cascade');
 
             $table->unsignedBigInteger('userId2');
             $table->foreign('userId2', 'fk_friends2_users')
             ->on('users')
             ->references('id')
-            ->onDelete('restrict');
+            ->onDelete('cascade');
         });
     }
 

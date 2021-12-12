@@ -27,9 +27,17 @@ class FriendController extends Controller {
 
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
-            
-                return response()->json(['error' => $codigoError]);
+            $errorCode = $error->errorInfo[1];
+
+            if ($errorCode == 1452) {
+
+                return response()->json(['error' => 'friend not found']);
+
+            } else {
+
+                return response()->json(['error' => $errorCode]);
+
+            }
             
         }
 

@@ -28,6 +28,7 @@ Route::middleware('auth:api')->group(function(){
     Route::get('getAll', [UserController::class, 'getAll']);
     Route::post('getProfile', [UserController::class, 'getProfile']);
     Route::put('updateProfile', [UserController::class, 'updateProfile']);
+    Route::delete('deleteUser', [UserController::class, 'deleteUser']);
 
     // Friends table Endpoints
 

@@ -89,6 +89,24 @@ class UserController extends Controller {
 
         }
 
-    }    
+    }
+    
+    public function deleteUser(Request $request){
+
+        $id = $request->input('id');
+
+        try {
+
+            return User::where('id', '=', $id)->delete($id);
+
+        } 
+        
+        catch (QueryException $error) {
+
+            return $error;
+
+        }
+
+    }
 
 }
