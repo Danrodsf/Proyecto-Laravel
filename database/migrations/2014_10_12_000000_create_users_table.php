@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration {
             $table->string('steamUserName');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
         });
 

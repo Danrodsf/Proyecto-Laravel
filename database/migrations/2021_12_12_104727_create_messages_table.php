@@ -17,7 +17,8 @@ class CreateMessagesTable extends Migration {
 
             $table->id();
             $table->string('message');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
              //Foreign Keys
             $table->unsignedBigInteger('from');

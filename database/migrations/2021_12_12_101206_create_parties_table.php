@@ -18,7 +18,8 @@ class CreatePartiesTable extends Migration {
             $table->id();
             $table->string('name');
             $table->boolean('owner');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
              //Foreign Keys
             $table->unsignedBigInteger('gameId');

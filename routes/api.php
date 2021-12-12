@@ -66,5 +66,6 @@ Route::middleware('auth:api')->group(function(){
     Route::post('addMessage', [MessageController::class, 'addMessage']);
     Route::put('updateMessage', [MessageController::class, 'updateMessage']);
     Route::delete('removeMessage', [MessageController::class, 'removeMessage']);
+    Route::post('getPartyMessages', [MessageController::class, 'getPartyMessages']);
 
 });

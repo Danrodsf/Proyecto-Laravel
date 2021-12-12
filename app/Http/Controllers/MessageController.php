@@ -147,7 +147,53 @@ class MessageController extends Controller {
 
                 'error' => "There was a problem deleting the message"
 
+                ]);
+
+            }
+
+        } 
+        
+        catch (QueryException $error) {
+
+            $codigoError = $error->errorInfo[1];
+
+            return response()->json([
+
+                'error' => $codigoError
+
             ]);
+            
+        }
+
+    }
+
+    public function getPartyMessages(Request $request) {
+
+        $user = Auth::id();
+        $partyId = $request->input('partyId');
+
+        try {
+
+        // Aquí verificamos que el usuario sea quien el dueño de la party donde fue enviado el mensaje.
+   
+            $isOwner = Message::selectRaw('messages.id, messages.message, users.userName, messages.created_at as Date')
+            ->Join('parties', 'parties.id', '=', 'messages.partyId')
+            ->Join('users', 'users.id', '=', 'messages.from')
+            ->where('parties.owner', '=', $user)
+            ->where('messages.partyId', '=', $partyId)
+            ->get();
+
+            if ($isOwner->isNotEmpty()) {
+
+                return $isOwner;
+                
+            } else {
+
+                return response()->json([
+
+                'error' => "You cannot view the messages"
+
+                ]);
 
             }
 
