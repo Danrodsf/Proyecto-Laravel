@@ -16,12 +16,33 @@ class FriendController extends Controller {
 
         try {
 
-            return Friend::create([
+            $friend = Friend::where(function ($query) use($userId1) {
+            $query->where('userId1', '=', $userId1)
+            ->orWhere('userId2', '=', $userId1);})
+            ->where(function ($query) use($userId2) {
+            $query->where('userId1', '=', $userId2)
+            ->orWhere('userId2', '=', $userId2);})
+            ->get();
+
+            if ($friend->isEmpty()) {
+
+                return Friend::create([
 
                     'userId1' => $userId1,
                     'userId2' => $userId2
 
-            ]);
+                ]);
+
+            } else {
+
+                return response() ->json([
+
+                'success' => false,
+                'Friend' => 'You are already Friends',
+
+                ], 500);
+
+            }
 
         }
 
