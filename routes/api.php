@@ -62,6 +62,9 @@ Route::middleware('auth:api')->group(function(){
 
     // Messages table Endpoints
 
+    Route::get('getMessages', [MessageController::class, 'getMessages']);
     Route::post('addMessage', [MessageController::class, 'addMessage']);
+    Route::put('updateMessage', [MessageController::class, 'updateMessage']);
+    Route::delete('removeMessage', [MessageController::class, 'removeMessage']);
 
 });
