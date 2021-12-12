@@ -27,5 +27,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Friend');
     }
+
+    public function belongs()
+    {
+        return $this->hasMany('App\Models\Belong');
+    }
     
 }
