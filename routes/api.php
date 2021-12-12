@@ -49,13 +49,16 @@ Route::middleware('auth:api')->group(function(){
     Route::put('updateGame', [GameController::class, 'updateGame']);
     Route::delete('removeGame', [GameController::class, 'removeGame']);
 
-    // Parties table Endpoints
+    // Parties table Endpoints  
 
     Route::post('addParty', [PartyController::class, 'addParty']);
-
-    // Belongs table Endpoints
-
-    Route::post('addBelong', [BelongController::class, 'addBelong']);
+    Route::post('joinParty', [PartyController::class, 'joinParty']);
+    Route::get('getParties', [PartyController::class, 'getParties']);
+    Route::post('getMyParties', [PartyController::class, 'getMyParties']);
+    Route::post('getPartyMembers', [PartyController::class, 'getPartyMembers']);
+    Route::delete('quitParty', [PartyController::class, 'quitParty']);
+    Route::delete('kickFromParty', [PartyController::class, 'kickFromParty']);
+    Route::delete('removeParty', [PartyController::class, 'removeParty']);
 
     // Messages table Endpoints
 

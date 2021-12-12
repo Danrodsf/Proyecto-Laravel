@@ -38,7 +38,7 @@ class CreatePartiesTable extends Migration {
      */
     public function down() {
 
-        Schema::dropIfExists('party');
+        Schema::dropIfExists('parties');
 
     }
 
