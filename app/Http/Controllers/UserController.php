@@ -45,7 +45,7 @@ class UserController extends Controller {
     
     public function updateProfile(Request $request) {
 
-        $id = Auth::id();
+        $id = $request->input('id');
 
         $this->validate($request, [
 
