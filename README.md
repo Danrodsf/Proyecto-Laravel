@@ -1,66 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<div id="top"></div>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <h3>Proyecto Api Laravel</h3>
 
-## About Laravel
+Daniel Rodriguez
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  <p>
+    Proyecto Api desarrollado en Laravel
+    <br />
+    <a href="https://drs-proyecto-laravel.herokuapp.com">Ver Aplicación</a>
+    <br />
+    <a href="https://github.com/Danrodsf/Proyecto-Laravel/issues">Reportar un Error</a>
+  </p>
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/832c7a28ea8e6d603244?action=collection%2Fimport)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Sobre el Proyecto
 
-## Learning Laravel
+La base de datos consta de 6 tablas:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. La principal `Users` donde estarian todos los datos de los usuarios de la aplicación.
+2. Los usuarios podrían añadirse como amigos, por lo que la tabla `Friends` era necesaria para dicha relación.
+3. Los usuarios podrían unirse en grupos o partidas llamadas `Parties`.
+4. Para enlazar a los usuarios con las partidas fue necesaria la creación de la tabla `Belongs`.
+5. Las partidas estarían unidas a un juego en específico, por lo que `Games` recopila toda la información de cada juego.
+6. Dentro de las partidas, los usuarios pueden enviarse mensajes para que sean vistos por todos los miembros de la misma, por lo que `Messages` guardaría todos los mensajes, el id del usuario quien lo envía, y el id de la partida a donde la envía.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Diagrama relacional de la base de datos
 
-## Laravel Sponsors
+<img src=https://raw.githubusercontent.com/Danrodsf/Proyecto-Laravel/main/img/DB.png>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/832c7a28ea8e6d603244?action=collection%2Fimport)
 
-### Premium Partners
+```
+Los requisitos para este proyecto serian:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+● Los usuarios se tienen que poder registrar a la aplicación, estableciendo un usuario/contraseña.
+● Los usuarios tienen que autenticarse a la aplicación haciendo login.
+● Los usuarios tienen que poder crear partidas (parties) por un determinado videojuego.
+● Los usuarios tienen que poder buscar partidas seleccionando un videojuego.
+● Los usuarios pueden entrar y salir de una Partida.
+● Los usuarios tienen que poder enviar mensajes a la partida. Estos mensajes tienen que poder ser editados y borrados por su usuario creador.
+● Los mensajes que existan a una partida se tienen que visualizar como un chat común.
+● Los usuarios pueden introducir y modificar sus datos de perfil, por ejemplo, su usuario de Steam.
+● Los usuarios tienen que poder hacer logout de la aplicación web.
+```
 
-## Contributing
+### Tecnologías
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Las tecnologías usadas para este proyecto fueron las siguientes:
 
-## Code of Conduct
+-   [MySQL](https://www.mysql.com//)
+-   [PHP](https://www.php.net/)
+-   [Eloquent](https://laravel.com/docs/8.x/eloquent)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Como instalar
 
-## Security Vulnerabilities
+1. Se requiere tener `COMPOSER` instalado en el sistema para poder instalar las dependencias.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Para instalar de manera local se debe ejecutar el comando `php composer install`.
 
-## License
+3. Para usar en una base de datos propia, se debe de cambiar el nombre del archivo `.env.example` a `.env` y agregar los datos de la base de datos a utilizar.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. Luego se deberá realizar las migraciones de las tablas con el comando `php artisan migrate`.
+
+5. Como último paso OPCIONAL se puede utilizar el comando `php artisan db:seed` para generar datos de ejemplo en la base de datos en las tablas `users` y `games`. El resto de tablas se requiere que se rellenen manualmente ya que existen dependencias y relaciones entre las demás tablas de la base de datos.
+
+<p align="right">(<a href="#top">Volver al inicio</a>)</p>
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/danielrodriguezserafin/

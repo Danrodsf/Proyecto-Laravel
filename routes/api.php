@@ -57,6 +57,8 @@ Route::middleware('auth:api')->group(function(){
     Route::post('addParty', [PartyController::class, 'addParty']);
     Route::post('joinParty', [PartyController::class, 'joinParty']);
     Route::get('getParties', [PartyController::class, 'getParties']);
+    Route::post('getPartiesByGameId', [PartyController::class, 'getPartiesByGameId']);
+    Route::post('getPartiesByGameTitle', [PartyController::class, 'getPartiesByGameTitle']);
     Route::post('getMyParties', [PartyController::class, 'getMyParties']);
     Route::post('getPartyMembers', [PartyController::class, 'getPartyMembers']);
     Route::delete('quitParty', [PartyController::class, 'quitParty']);
