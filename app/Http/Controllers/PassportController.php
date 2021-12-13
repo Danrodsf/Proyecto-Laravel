@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class PassportController extends Controller {
 
@@ -78,10 +79,23 @@ class PassportController extends Controller {
 
     }
 
-    public function Logout(Request $request) {
+    public function logout() { 
 
-        // to do logout
+        $user = Auth::user()->token();
 
+        try {
+
+            $user->revoke();
+            return 'logged out';
+
+        } 
+        
+        catch (QueryException $error) {
+
+            return $error;
+
+        }
+        
     }
 
 }
