@@ -47,6 +47,8 @@ Route::middleware('auth:api')->group(function(){
 
     Route::post('addGame', [GameController::class, 'addGame']);
     Route::get('getGames', [GameController::class, 'getGames']);
+    Route::post('getGameById', [GameController::class, 'getGameById']);
+    Route::post('getGameByTitle', [GameController::class, 'getGameByTitle']);
     Route::put('updateGame', [GameController::class, 'updateGame']);
     Route::delete('removeGame', [GameController::class, 'removeGame']);
 

@@ -9,22 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller {
 
-    public function getMessages() {
-
-        try {
-            
-            return Message::all();
-
-        } 
-        
-        catch(QueryException $error) {
-
-            return $error;
-
-        }
-
-    }
-
     public function addMessage(Request $request) {
 
         $user = Auth::id();
@@ -61,14 +45,30 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
+        }
+
+    }
+
+    public function getMessages() {
+
+        try {
+            
+            return Message::all();
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
         }
 
     }
@@ -104,11 +104,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -155,11 +155,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -199,11 +199,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             

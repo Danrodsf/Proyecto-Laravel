@@ -127,7 +127,7 @@ class FriendController extends Controller {
         try {
 
             $accept = [
-                
+
                 'accepted' => $request->accepted
 
             ];
@@ -161,7 +161,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => false,
-                'Friend' => 'Friend not found',
+                'Error' => 'Friend not found',
 
             ], 400);
 
@@ -172,7 +172,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => true,
-                'Friend' => 'Friend deleted',
+                'Error' => 'Friend deleted',
 
             ], 200);
 
@@ -181,7 +181,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => false,
-                'Friend' => 'Friend can not be deleted',
+                'Error' => 'Friend can not be deleted',
 
             ], 500);
 
