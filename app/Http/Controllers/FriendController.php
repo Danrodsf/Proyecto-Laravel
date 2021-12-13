@@ -101,6 +101,24 @@ class FriendController extends Controller {
         
     }
 
+    public function getPendingFriendRequest(){
+
+        $id = Auth::id();
+
+        try {
+            
+            return Friend::all()->where('userId2', '=', $id)->where('accepted', '=', 0);
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
+        }
+        
+    }
+
     public function acceptFriend(Request $request){
 
         $userId1 = Auth::id();

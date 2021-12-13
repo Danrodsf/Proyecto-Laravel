@@ -39,6 +39,7 @@ Route::middleware('auth:api')->group(function(){
     Route::post('addFriend', [FriendController::class, 'addFriend']);
     Route::post('getFriends', [FriendController::class, 'getFriends']);
     Route::post('getPendingFriends', [FriendController::class, 'getPendingFriends']);
+    Route::post('getPendingFriendRequest', [FriendController::class, 'getPendingFriendRequest']);
     Route::put('acceptFriend', [FriendController::class, 'acceptFriend']);
     Route::delete('removeFriend', [FriendController::class, 'removeFriend']);
 
