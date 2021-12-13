@@ -128,6 +128,7 @@ class FriendController extends Controller {
 
             $accept = [
 
+                'userId1' => $userId1,
                 'userId2' => $request->userId2,
                 'accepted' => $request->accepted
 
