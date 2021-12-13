@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
     
@@ -24,9 +25,9 @@ class UserController extends Controller {
 
     }
 
-    public function getProfile(Request $request) {
+    public function getProfile() {
 
-        $id = $request->input('id');
+        $id = Auth::id();
 
         try {
 
@@ -44,7 +45,7 @@ class UserController extends Controller {
     
     public function updateProfile(Request $request) {
 
-        $id = $request->input('id');
+        $id = Auth::id();
 
         $this->validate($request, [
 

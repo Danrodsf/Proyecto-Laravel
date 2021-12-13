@@ -6,12 +6,13 @@ use Illuminate\Database\QueryException;
 
 use Illuminate\Http\Request;
 use App\Models\Friend;
+use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller {
 
     public function addFriend(Request $request){
 
-        $userId1 = $request->input('userId1');
+        $userId1 = Auth::id();
         $userId2 = $request->input('userId2');
 
         try {
@@ -64,9 +65,9 @@ class FriendController extends Controller {
 
     }
 
-    public function getFriends(Request $request){
+    public function getFriends(){
 
-        $id = $request->input('userId');
+        $id = Auth::id();
 
         try {
             
@@ -82,9 +83,9 @@ class FriendController extends Controller {
         
     }
 
-    public function getPendingFriends(Request $request){
+    public function getPendingFriends(){
 
-        $id = $request->input('userId');
+        $id = Auth::id();
 
         try {
             
@@ -102,7 +103,7 @@ class FriendController extends Controller {
 
     public function acceptFriend(Request $request){
 
-        $userId1 = $request->input('userId1');
+        $userId1 = Auth::id();
         $userId2 = $request->input('userId2');
 
         try {
@@ -129,7 +130,7 @@ class FriendController extends Controller {
 
     public function removeFriend(Request $request){
 
-        $userId1 = $request->input('userId1');
+        $userId1 = Auth::id();
         $userId2 = $request->input('userId2');
 
         $friendFound = Friend::where(function ($query) use($userId1) {
