@@ -112,6 +112,57 @@ class PartyController extends Controller {
 
     }
 
+        public function getPartiesByGameId(Request $request) {
+
+        $gameId = $request->input('id');
+
+        try {
+
+            return Party::where('gameId', '=', $gameId)->get();
+
+        } 
+        
+        catch (QueryException $error) {
+
+            $errorCode = $error->errorInfo[1];
+
+            return response()->json([
+
+                'error' => $errorCode
+
+            ]);
+            
+        }
+
+    }
+
+    public function getPartiesByGameTitle(Request $request) {
+
+        $gameTitle = $request->input('title');
+
+        try {
+
+            return Party::selectRaw('parties.gameId, parties.name as Party, games.title as Game')
+            ->join('games', 'games.id', '=', 'parties.gameId')
+            ->where('games.title', '=', $gameTitle)
+            ->get();
+
+        } 
+        
+        catch (QueryException $error) {
+
+            $errorCode = $error->errorInfo[1];
+
+            return response()->json([
+
+                'error' => $errorCode
+
+            ]);
+            
+        }
+
+    }
+
     public function getMyParties() {
 
         $id = Auth::id();
