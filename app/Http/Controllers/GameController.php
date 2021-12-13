@@ -27,11 +27,11 @@ class GameController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -44,6 +44,42 @@ class GameController extends Controller {
         try {
             
             return Game::all();
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
+        }
+
+    }
+
+    public function getGameById(Request $request) {
+
+        $id = $request->input('id'); 
+
+        try {
+            
+            return Game::where('id', '=', $id)->get();
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
+        }
+
+    }
+
+    public function getGameByTitle(Request $request) {
+
+        $title = $request->input('title'); 
+
+        try {
+            
+            return Game::where('title', '=', $title)->get();
 
         } 
         

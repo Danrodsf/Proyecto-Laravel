@@ -101,6 +101,24 @@ class FriendController extends Controller {
         
     }
 
+    public function getPendingFriendRequest(){
+
+        $id = Auth::id();
+
+        try {
+            
+            return Friend::all()->where('userId2', '=', $id)->where('accepted', '=', 0);
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
+        }
+        
+    }
+
     public function acceptFriend(Request $request){
 
         $userId1 = Auth::id();
@@ -110,8 +128,6 @@ class FriendController extends Controller {
 
             $accept = [
 
-                'userId1' => $request->userId1,
-                'userId2' => $request->userId2,
                 'accepted' => $request->accepted
 
             ];
@@ -145,7 +161,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => false,
-                'Friend' => 'Friend not found',
+                'Error' => 'Friend not found',
 
             ], 400);
 
@@ -156,7 +172,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => true,
-                'Friend' => 'Friend deleted',
+                'Error' => 'Friend deleted',
 
             ], 200);
 
@@ -165,7 +181,7 @@ class FriendController extends Controller {
             return response() ->json([
 
                 'success' => false,
-                'Friend' => 'Friend can not be deleted',
+                'Error' => 'Friend can not be deleted',
 
             ], 500);
 

@@ -9,22 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller {
 
-    public function getMessages() {
-
-        try {
-            
-            return Message::all();
-
-        } 
-        
-        catch(QueryException $error) {
-
-            return $error;
-
-        }
-
-    }
-
     public function addMessage(Request $request) {
 
         $user = Auth::id();
@@ -61,14 +45,30 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
+        }
+
+    }
+
+    public function getMessages() {
+
+        try {
+            
+            return Message::all();
+
+        } 
+        
+        catch(QueryException $error) {
+
+            return $error;
+
         }
 
     }
@@ -104,11 +104,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -155,11 +155,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -174,18 +174,16 @@ class MessageController extends Controller {
 
         try {
 
-        // Aquí verificamos que el usuario sea quien el dueño de la party donde fue enviado el mensaje.
-   
-            $isOwner = Message::selectRaw('messages.id, messages.message, users.userName, messages.created_at as Date')
-            ->Join('parties', 'parties.id', '=', 'messages.partyId')
-            ->Join('users', 'users.id', '=', 'messages.from')
-            ->where('parties.owner', '=', $user)
-            ->where('messages.partyId', '=', $partyId)
-            ->get();
+            // Aquí verificamos que el usuario sea miembro de la party a la que quiere ver los mensajes.
+        
+            $isMember = Belong::where('userId', '=', $user)->where('partyId', '=', $partyId)->get();
 
-            if ($isOwner->isNotEmpty()) {
+            if ($isMember->isNotEmpty()) {
 
-                return $isOwner;
+                return Message::selectRaw('messages.id as MessageId, messages.message, users.userName, messages.created_at as Date')
+                    ->Join('users', 'users.id', '=', 'messages.from')
+                    ->where('messages.partyId', '=', $partyId)
+                    ->get();
                 
             } else {
 
@@ -201,11 +199,11 @@ class MessageController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             

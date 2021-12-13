@@ -39,6 +39,7 @@ Route::middleware('auth:api')->group(function(){
     Route::post('addFriend', [FriendController::class, 'addFriend']);
     Route::post('getFriends', [FriendController::class, 'getFriends']);
     Route::post('getPendingFriends', [FriendController::class, 'getPendingFriends']);
+    Route::post('getPendingFriendRequest', [FriendController::class, 'getPendingFriendRequest']);
     Route::put('acceptFriend', [FriendController::class, 'acceptFriend']);
     Route::delete('removeFriend', [FriendController::class, 'removeFriend']);
 
@@ -46,6 +47,8 @@ Route::middleware('auth:api')->group(function(){
 
     Route::post('addGame', [GameController::class, 'addGame']);
     Route::get('getGames', [GameController::class, 'getGames']);
+    Route::post('getGameById', [GameController::class, 'getGameById']);
+    Route::post('getGameByTitle', [GameController::class, 'getGameByTitle']);
     Route::put('updateGame', [GameController::class, 'updateGame']);
     Route::delete('removeGame', [GameController::class, 'removeGame']);
 

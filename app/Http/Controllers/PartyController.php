@@ -56,11 +56,11 @@ class PartyController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
@@ -100,11 +100,11 @@ class PartyController extends Controller {
         
         catch (QueryException $error) {
 
-            $codigoError = $error->errorInfo[1];
+            $errorCode = $error->errorInfo[1];
 
             return response()->json([
 
-                'error' => $codigoError
+                'error' => $errorCode
 
             ]);
             
