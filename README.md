@@ -71,3 +71,71 @@ Las tecnologías usadas para este proyecto fueron las siguientes:
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/danielrodriguezserafin/
+
+### Endpoints
+
+#### Endpoints que NO tienen protección Oauth.
+
+```
+Post -- api/signUp -- User Register.
+Post -- api/signIn -- User Login.
+```
+
+#### Endpoints protegidos por Oauth.
+
+##### Users
+
+```
+Post -- api/logout -- User Logout.
+Get -- api/getAll -- Lista de todos los usuarios registrados.
+Post -- api/getProfile -- Lista los datos de el usuario logueado.
+Put -- api/updateProfile -- Actualiza los datos del usuario logueado.
+Delete -- api/removeUser -- Elimina un usuario.
+```
+
+##### Friends
+
+```
+Post -- api/addFriend -- Crea una solicitud de amistad con otro usuario.
+Post -- api/getFriends -- Lista de todos los amigos confirmados del usuario logueado.
+Post -- api/getPendingFriends -- Lista de todas las solicitudes de amistad pendientes de confirmar del usuario.
+Post -- api/getPendingFriendsRequest -- Lista de todas las solicitudes de amistad recibidas pendientes de confirmar por el usuario.
+Put -- api/acceptFriend -- Actualiza una solicitud de amistad recibida para confirmar amistad.
+Delete -- api/removeFriend -- Elimina a un amigo confirmado de la lista de amigos del usuario.
+```
+
+##### Parties
+
+```
+get -- api/getParties -- Lista todas las partidas creadas.
+Post -- api/addParty -- Crea una partida.
+Post -- api/joinParty -- Añade como miembro de una partida al usuario.
+Post -- api/getPartiesByGameId -- Lista todas las partidas filtradas por juego pasado por Id del juego.
+Post -- api/getPartiesByGameTitle -- Lista todas las partidas filtradas por juego pasado por el título del juego.
+Post -- api/getMyParties -- Lista todas las partidas de la que es miembro el usuario.
+Post -- api/getPartyMembers -- Lista de todos los miembros de una partida de la que el usuario es miembro.
+Delete -- api/removeParty -- Elimina una partida de la que el usuario es el dueño.
+Delete -- api/quitParty -- Elimina como miembro de una partida al usuario.
+Delete -- api/kickFromParty -- Elimina como miembro de una partida a un usuario seleccionado por el dueño de la misma.
+```
+
+##### Games
+
+```
+Get -- api/getGames -- Lista de todos los juegos registrados.
+Post -- api/addGame -- Añade un juego a la base de datos.
+Post -- api/getGameById -- Lista la informacion de un juego seleccionado por su id.
+Post -- api/getGameByTitle -- Lista la informacion de un juego seleccionado por su titulo.
+Put -- api/updateGame -- Actualiza la información de un juego.
+Delete -- api/removeGame -- Elimina un juego de la base de datos.
+```
+
+##### Messages
+
+```
+Get -- api/getMessages -- Lista todos los mensajes enviados.
+Post -- api/addMessage -- Envia un mensaje nuevo a una partida de la que el usuario es miembro.
+Post -- api/getPartyMessages -- Lista todos los mensajes de una partida de la que el usuario es miembro.
+Put -- api/updateMessage -- Edita un mensaje enviado previamente por el usuario.
+Delete -- api/removeMessage -- Elimina un mensaje enviado previamente por el usuario.
+```
