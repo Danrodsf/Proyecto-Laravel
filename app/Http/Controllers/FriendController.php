@@ -71,9 +71,12 @@ class FriendController extends Controller {
 
         try {
             
-            return Friend::all()->where('userId1', '=', $id)->where('accepted', '=', 1);
-
-        } 
+            return Friend::where(function($query) use ($id) {
+                $query->where('userId1', '=', $id)
+                ->orWhere('userId2', '=', $id);})
+                ->Where('accepted', '=', 1)
+                ->get();
+            } 
         
         catch(QueryException $error) {
 

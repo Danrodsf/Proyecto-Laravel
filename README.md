@@ -71,3 +71,35 @@ Las tecnologías usadas para este proyecto fueron las siguientes:
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/danielrodriguezserafin/
+
+### Endpoints
+
+#### Endpoints que NO tienen protección Oauth.
+
+```
+Post -- api/signUp -- User Register.
+Post -- api/signIn -- User Login.
+```
+
+#### Endpoints protegidos por Oauth.
+
+##### Users
+
+```
+Post -- api/logout -- User Logout.
+Get -- api/getAll -- Lista de todos los usuarios registrados.
+Post -- api/getProfile -- Lista los datos de el usuario logueado.
+Put -- api/updateProfile -- Actualiza los datos del usuario logueado.
+Delete -- api/deleteUser -- Elimina un usuario.
+```
+
+##### Friends
+
+```
+Post -- api/addFriend -- Crea una solicitud de amistad con otro usuario.
+Post -- api/getFriends -- Lista de todos los amigos confirmados del usuario logueado.
+Post -- api/getPendingFriends -- Lista de todas las solicitudes de amistad pendientes de confirmar del usuario logueado.
+Post -- api/getProfile -- Lista los datos de el usuario logueado.
+Put -- api/updateProfile -- Actualiza los datos del usuario logueado.
+Delete -- api/deleteUser -- Elimina un usuario.
+```
